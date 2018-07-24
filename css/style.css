@@ -1,1 +1,7 @@
 body { background-color: lightgray; }
+
+ul { list-style-type: none; }
+
+.column { height: 25vh; width: 30vw; }
+
+.card { padding: 5px; background-color: white; width: 100px; border: 2px solid black; }
