@@ -3,15 +3,14 @@ body {
 }
 ul {
     list-style-type: none;
+    height: 25vh;
 }
 .column {
+    min-height: 200px;
     
-    height: 25vh;
-    width: 30vw;
 }
 .card {
     padding: 5px;
     background-color: white;
-    width: 100px;
-    border: 2px solid black;
+    border: 1px solid black;
 }

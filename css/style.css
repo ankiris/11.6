@@ -1,7 +1,7 @@
 body { background-color: lightgray; }
 
-ul { list-style-type: none; }
+ul { list-style-type: none; height: 25vh; }
 
-.column { height: 25vh; width: 30vw; }
+.column { min-height: 200px; }
 
-.card { padding: 5px; background-color: white; width: 100px; border: 2px solid black; }
+.card { padding: 5px; background-color: white; border: 1px solid black; }
