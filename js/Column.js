@@ -1,4 +1,4 @@
-function Column(id, name) {
+function Column(name) {
     var self = this;
 
     this.id = id;
@@ -6,33 +6,31 @@ function Column(id, name) {
     this.element = generateTemplate('column-template', { name: this.name, id: this.id });
 
     this.element.querySelector('.column').addEventListener('click', function (event) {
-        if (event.target.classList.contains('btn-delete')) {
+      if (event.target.classList.contains('btn-delete')) {
             self.removeColumn();
-        }
-    
-        if (event.target.classList.contains('add-card')) {
-            var cardName = prompt("Enter the name of the card");
-            event.preventDefault();
-          
-            var data = new FormData();
-            data.append('name', cardName);
-            data.append('bootcamp_kanban_column_id', self.id);
+      }
+  
+      if (event.target.classList.contains('add-card')) {
+        var cardName = prompt("Enter the name of the card");
+        event.preventDefault();
 
-            fetch(baseUrl + '/card', {
-                method: 'POST',
-                headers: myHeaders,
-                body: data,
-            })
-            .then(function(res) {
-                return res.json();
-            })
-            .then(function(resp) {
-                var card = new Card(resp.id, cardName);
-                self.addCard(card);
-            });
-          
-            self.addCard(new Card(cardName));
-        }
+        var data = new FormData();
+        data.append('name', cardName);
+        data.append('bootcamp_kanban_column_id', self.id);
+
+        fetch(baseUrl + '/card', {
+            method: 'POST',
+            headers: myHeaders,
+            body: data,
+        })
+        .then(function(res) {
+            return res.json();
+        })
+        .then(function(resp) {
+            var card = new Card(resp.id, cardName);
+            self.addCard(card);
+        });
+      }
   });
 }
 
@@ -43,11 +41,11 @@ Column.prototype = {
   removeColumn: function() {
     var self = this;
     fetch(baseUrl + '/column/' + self.id, { method: 'DELETE', headers: myHeaders })
-        .then(function(resp) {
+      .then(function(resp) {
         return resp.json();
-        })
-        .then(function(resp) {
+      })
+      .then(function(resp) {
         self.element.parentNode.removeChild(self.element);
-        });
-    }
-}
+      });
+  }
+};
