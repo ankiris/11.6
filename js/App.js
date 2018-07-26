@@ -15,7 +15,7 @@ var myHeaders = {
   'X-Auth-Token': 'X-Auth-Token',
   'Content-Type': 'application/json; charset=utf-8'
 };
-fetch(baseUrl + '/board', { headers: myHeaders })
+fetch(baseUrl, { headers: myHeaders })
   .then(function(resp) {
     return resp.json();
   })
